@@ -31,7 +31,7 @@ public class GoogleQuery {
 		InputStream in = conn.getInputStream();
 		InputStreamReader inReader = new InputStreamReader(in,"utf-8");
 		BufferedReader bufReader = new BufferedReader(inReader);
-		String line = null;
+		String line = null; //換webtree？
 
 		while((line=bufReader.readLine())!=null){
 			retVal += line;

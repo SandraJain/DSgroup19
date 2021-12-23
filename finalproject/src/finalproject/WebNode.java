@@ -8,7 +8,7 @@ public class WebNode {
 	public WebNode parent;
 	public ArrayList<WebNode> children;
 	public WebPage webPage;	//child element
-	public double nodeScore;//main element This node's score += all its children¡¦s nodeScore
+	public double nodeScore;//main element This node's score += all its children nodeScore
 	
 	public WebNode(WebPage webPage){
 		this.webPage = webPage;
@@ -24,7 +24,7 @@ public class WebNode {
 		nodeScore = webPage.score;
 		
 		
-		//**nodeScore += all children¡¦s nodeScore 
+		//**nodeScore += all children nodeScore 
 		for(WebNode child : children){
 			nodeScore += child.nodeScore;
 		}
