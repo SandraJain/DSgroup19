@@ -6,27 +6,29 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		System.out.println("Please type: URL Keyword");
+		System.out.println("Please type: Keyword");
 		//HW10
 		Scanner sc = new Scanner(System.in);
 		while(sc.hasNextLine()){
-		    String urlStr = sc.next();
+		    //String urlStr = sc.next();
 		    String keyword = sc.next();
+		    
+		    GoogleQuery googleQuery = new GoogleQuery(keyword);
 		   
-		    WordCounter counter = new WordCounter(urlStr);
-		    System.out.println(counter.countKeyword(keyword));
+		    //WordCounter counter = new WordCounter(urlStr);
+		    //System.out.println(counter.countKeyword(keyword));
 		    
 		    
 		    WebPageList webPageList = new WebPageList();
-		    WebPage rootPage = new WebPage("http://soslab.nccu.edu.tw/Welcome.html", "Soslab");	//Call Google§¹ªº³sµ²
+		    WebPage rootPage = new WebPage("http://soslab.nccu.edu.tw/Welcome.html", "Soslab");	//Call Googleï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
 		    webPageList.add(rootPage);
 			WebTree tree = new WebTree(rootPage);
 			//build childnode
-			tree.root.addChild(new WebNode(new WebPage("http://soslab.nccu.edu.tw/Publications.html","Publication")));//¤lºô­¶ªº³sµ²
-			tree.root.addChild(new WebNode(new WebPage("http://soslab.nccu.edu.tw/Projects.html","Projects")));//¤lºô­¶ªº³sµ²
+			tree.root.addChild(new WebNode(new WebPage("http://soslab.nccu.edu.tw/Publications.html","Publication")));//ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
+			tree.root.addChild(new WebNode(new WebPage("http://soslab.nccu.edu.tw/Projects.html","Projects")));//ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
 			//tree.root.children.get(1).addChild(new WebNode(new WebPage("https://vlab.cs.ucsb.edu/stranger/", "Stranger")));
-			tree.root.addChild(new WebNode(new WebPage("http://soslab.nccu.edu.tw/Members.html", "MEMBER")));//¤lºô­¶ªº³sµ²
-			tree.root.addChild(new WebNode(new WebPage("http://www3.nccu.edu.tw/~yuf/course.htm","Course")));//¤lºô­¶ªº³sµ²
+			tree.root.addChild(new WebNode(new WebPage("http://soslab.nccu.edu.tw/Members.html", "MEMBER")));//ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
+			tree.root.addChild(new WebNode(new WebPage("http://www3.nccu.edu.tw/~yuf/course.htm","Course")));//ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
 			//read 2 Yu 1.2 Fang 1.8 
 			//Scanner scanner = new Scanner(System.in);
 			
