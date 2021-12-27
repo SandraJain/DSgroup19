@@ -7,17 +7,17 @@ public class KeywordList {
 	
 	public KeywordList(){
 		this.keywordList = new ArrayList<Keyword>();
-		keywordList.add(new Keyword("¬F¤j",5));
-		keywordList.add(new Keyword("¬Fªv¤j¾Ç",5));
+		keywordList.add(new Keyword("æ”¿å¤§",5));
+		keywordList.add(new Keyword("æ”¿æ²»å¤§å­¸",5));
 		keywordList.add(new Keyword("NCCU",5));
 		keywordList.add(new Keyword("National Chengchi University",5));
-		keywordList.add(new Keyword("¥x¥_",2));
-		keywordList.add(new Keyword("¤å¤s",4));
-		keywordList.add(new Keyword("«H¸q",3));
-		keywordList.add(new Keyword("´º¬ü",3));
-		keywordList.add(new Keyword("¤ì¬]",4));
-		keywordList.add(new Keyword("¿ßªÅ",3));
-		keywordList.add(new Keyword("«ü«n¸ô",4));
+		keywordList.add(new Keyword("æœ¨æŸµ",4));
+		keywordList.add(new Keyword("æ–‡å±±",4));
+		keywordList.add(new Keyword("æŒ‡å—è·¯",4));
+		keywordList.add(new Keyword("ä¿¡ç¾©",3));
+		keywordList.add(new Keyword("æ™¯ç¾",3));
+		keywordList.add(new Keyword("è²“ç©º",3));
+		keywordList.add(new Keyword("å°åŒ—",2));
 		
     }
 	
