@@ -54,14 +54,15 @@ public class GoogleQuery {
 //		 System.out.println(lis.size());
 		
 		for(Element li : lis){
-			try {
-				String citeUrl = li.select("a").get(0).attr("href");
-				String title = li.select("a").get(0).select(".vvjwJb").text();
-				if(title.equals("")) {
+			try{
+				citeUrls.add(li.select("a").get(0).attr("href"));
+				titles.add(li.select("a").get(0).select(".vvjwJb").text());
+				if(titles.get(titles.size()-1).equals("")) {
 					continue;
 				}
-				System.out.println(title + ","+citeUrl);
-				retVal.put(title, citeUrl);
+				System.out.println(titles.get(titles.size()-1) + ","+ citeUrls.get(titles.size()-1));
+				retVal.put(titles.get(titles.size()-1), citeUrls.get(titles.size()-1));
+
 			} catch (IndexOutOfBoundsException e) {
 //				e.printStackTrace();
 			}
