@@ -17,6 +17,8 @@ public class GoogleQuery {
 	public String searchKeyword;
 	public String url;
 	public String content;
+	public ArrayList<String> citeUrls;
+	public ArrayList<String> titles;
 
 	public GoogleQuery(String searchKeyword){
 		this.searchKeyword = searchKeyword;
