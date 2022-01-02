@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.jsoup.Jsoup;
@@ -14,6 +15,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class GoogleQuery {
+	
 	public String searchKeyword;
 	public String url;
 	public String content;
@@ -23,6 +25,8 @@ public class GoogleQuery {
 	public GoogleQuery(String searchKeyword){
 		this.searchKeyword = searchKeyword;
 		this.url = "http://www.google.com/search?q="+searchKeyword+"&oe=utf8&num=20";
+		citeUrls = new ArrayList<String>();
+		titles = new ArrayList<String>();
 	}
 	
 	private String fetchContent() throws IOException{
@@ -57,12 +61,12 @@ public class GoogleQuery {
 		
 		for(Element li : lis){
 			try{
-				citeUrls.add(li.select("a").get(0).attr("href"));
+				citeUrls.add(li.select("a").get(0).attr("href").substring(7));
 				titles.add(li.select("a").get(0).select(".vvjwJb").text());
-				if(titles.get(titles.size()-1).equals("")) {
+				if(titles.get(titles.size()-1).equals("")) { 
 					continue;
 				}
-				System.out.println(titles.get(titles.size()-1) + ","+ citeUrls.get(titles.size()-1));
+				System.out.println(titles.get(titles.size()-1) + ","+ citeUrls.get(titles.size()-1)); 
 				retVal.put(titles.get(titles.size()-1), citeUrls.get(titles.size()-1));
 
 			} catch (IndexOutOfBoundsException e) {
