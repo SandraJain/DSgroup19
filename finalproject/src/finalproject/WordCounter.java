@@ -11,11 +11,12 @@ public class WordCounter {
 	private String urlStr;
     private String content;
     
-    public WordCounter(String urlStr){
+    public WordCounter(String urlStr) throws IOException{
     	this.urlStr = urlStr;
+    	fetchContent();
     }
     
-    private String fetchContent() throws IOException{
+    public String fetchContent() throws IOException{
 		URL url = new URL(this.urlStr);
 		URLConnection conn = url.openConnection();
 		InputStream in = conn.getInputStream();
