@@ -11,16 +11,22 @@ public class WebPage {
 	public int score;
 	
 	public WebPage(String url,String name){
-		this.url = url;
+		this.url = url;//.substring(7);
+		System.out.println(this.url);  
 		this.name = name;
-		this.counter = new WordCounter(url);	
+		try {
+			counter = new WordCounter(url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 	
-	public void setScore(ArrayList<Keyword> keywordList) throws IOException{
+	public void setScore(KeywordList keywordList) throws IOException{
 		score = 0;
 //		3.calculate score
 		//score 還要加上使用者輸入字要*8
-		for(Keyword k : keywordList){	
+		for(Keyword k : keywordList.keywordList){	
 			score+=k.weight*counter.countKeyword(k.name);
 			
 		}
