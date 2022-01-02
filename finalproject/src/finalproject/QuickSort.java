@@ -24,7 +24,7 @@ public class QuickSort {
 		
 		private void quickSort(int leftbound, int rightbound){
 			//1. implement quickSort algorithm
-			if(leftbound < rightbound) { //小排到大 要改成大到小
+			if(leftbound < rightbound) { //嚙緘嚙複剁蕭j 嚙緯嚙踝成嚙篌嚙踝蕭p
 				int i=(leftbound-1);
 				int pivot=list.webPageList.get(rightbound).score;
 				for(int j=leftbound; j<=rightbound-1;j++) {
