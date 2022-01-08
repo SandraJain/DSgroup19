@@ -18,7 +18,7 @@ public class KeywordList {
 		keywordList.add(new Keyword("景美",3));
 		keywordList.add(new Keyword("貓空",3));
 		keywordList.add(new Keyword("台北",2));
-		
+		keywordList.add(new Keyword("North Carolina Central University",-5));	
     }
 	
 	public void add(Keyword keyword){
