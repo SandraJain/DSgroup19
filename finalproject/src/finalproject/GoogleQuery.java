@@ -8,6 +8,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.net.URLDecoder;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -43,7 +44,7 @@ public class GoogleQuery {
 			retVal += line;
 		}
 		return retVal;
-	}
+	} 
 	
 	public HashMap<String, String> query() throws IOException{
 		if(content==null){
@@ -62,6 +63,10 @@ public class GoogleQuery {
 		for(Element li : lis){
 			try{
 				citeUrls.add(li.select("a").get(0).attr("href").substring(7));
+				//把奇怪的網址截掉
+				String currentUrl = citeUrls.get(citeUrls.size()-1);
+				int wrong = currentUrl.indexOf("&sa=U&ved");
+				citeUrls.set(citeUrls.size()-1, URLDecoder.decode(currentUrl.substring(0, wrong), "UTF-8"));
 				titles.add(li.select("a").get(0).select(".vvjwJb").text());
 				if(titles.get(titles.size()-1).equals("")) { 
 					continue;
