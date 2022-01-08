@@ -28,7 +28,7 @@ public class QuickSort {
 				int i=(leftbound-1);
 				int pivot=list.webPageList.get(rightbound).score;
 				for(int j=leftbound; j<=rightbound-1;j++) {
-					if(list.webPageList.get(j).score<pivot){
+					if(list.webPageList.get(j).score>pivot){
 						i++;
 						swap(i,j);
 					}
