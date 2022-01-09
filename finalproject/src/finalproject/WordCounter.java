@@ -17,12 +17,12 @@ public class WordCounter {
     }
     
     public String fetchContent() throws IOException{
-		URL url = new URL(this.urlStr);
+    	URL url = new URL(this.urlStr);
 		URLConnection conn = url.openConnection();
 		InputStream in = conn.getInputStream();
-		BufferedReader br = new BufferedReader(new InputStreamReader(in,"UTF-8"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(in));
 	
-		String retVal = "";
+		String retVal = "";																																																																																																																																																												
 	
 		String line = null;
 		
@@ -33,7 +33,8 @@ public class WordCounter {
 		return retVal;
     }
     
-    public int countKeyword(String keyword) throws IOException{
+    public int countKeyword(String keyword) throws IOException{//, SSLHandshakeException{
+    	try {
 		if (content == null){
 		    content = fetchContent();
 		}
@@ -55,5 +56,8 @@ public class WordCounter {
 		}
 	
 		return retVal;
+    	}catch(Exception e) {//SSLHandshake
+    		return 0;
+    	}
     }
 }
