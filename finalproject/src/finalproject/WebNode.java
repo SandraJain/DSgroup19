@@ -1,21 +1,21 @@
 package finalproject;
-
+ 
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class WebNode {
 	public WebNode parent;
-	public ArrayList<WebNode> children;
+	public ArrayList<WebNode> children; 
 	public WebPage webPage;	//child element
-	public double nodeScore;//main element This node's score += all its children nodeScore
+	public int nodeScore;//main element This node's score += all its children nodeScore
 	
 	public WebNode(WebPage webPage){
 		this.webPage = webPage;
 		this.children = new ArrayList<WebNode>();
 	}
 	
-	public void setNodeScore(KeywordList keywords) throws IOException{
+	public void setNodeScore(ArrayList<Keyword> keywords) throws IOException{//KeywordList
 		//this method should be called in post-order mode
 		
 		//**compute webPage score
