@@ -23,131 +23,6 @@
 	animation-iteration-count:infinite;
 	
 }
-@keyframes note{
-	0%{
-		
-		left:640px;		
-		top:0px;
-		
-	}
-	25%{
-		left:700px;
-		top:60px;
-		
-	}
-	50%{
-		left:760px;
-		top:0px;
-	}
-	75%{
-		left:700px;
-		top:-60px;
-	}
-	100%{
-		left:640px;
-		top:0px;
-	}
-}
-.note1{
-	position:absolute;
-	width:50px;
-	height:50px;
-	animation-direction: alternate;
-	animation-timing-function: ease-in-out;
-	animation-name:note1;
-	animation-duration:5s;
-	animation-iteration-count:infinite;
-}
-@keyframes note1{
-	0%{
-		left:760px;		
-		top:0px;
-		
-	}
-	25%{
-		left:700px;
-		top:-60px;
-	}
-	50%{
-		left:640px;
-		top:0px;
-	}
-	75%{
-		left:700px;
-		top:60px;
-	}
-	100%{
-		left:760px;
-		top:0px;
-		
-	}
-}
-.note2{
-	position:absolute;
-	width:50px;
-	height:50px;
-	animation-direction: alternate;
-	animation-timing-function: ease-in-out;
-	animation-name:note2;
-	animation-duration:5s;
-	animation-iteration-count:infinite;
-}
-@keyframes note2{
-	0%{
-		left:700px;		
-		top:-60px;		
-	}
-	25%{
-		left:640px;
-		top:0px;
-	}
-	50%{
-		left:700px;
-		top:60px;
-	}
-	75%{
-		left:760px;
-		top:0px;
-	}
-	100%{
-		left:700px;
-		top:-60px;
-		
-	}
-}
-.note3{
-	position:absolute;
-	width:50px;
-	height:50px;
-	animation-direction: alternate;
-	animation-timing-function: ease-in-out;
-	animation-name:note3;
-	animation-duration:5s;
-	animation-iteration-count:infinite;
-}
-@keyframes note3{
-	0%{
-		left:700px;		
-		top:60px;		
-	}
-	25%{
-		left:760px;
-		top:0px;
-	}
-	50%{
-		left:700px;
-		top:-60px;
-	}
-	75%{
-		left:640px;
-		top:0px;
-	}
-	100%{
-		left:700px;
-		top:60px;
-		
-	}
-}
 .box{
   position:relative;
 }
@@ -210,7 +85,7 @@
 }
 </style>
 </head>
-<body style='background-color:#B0E0E6'>
+<body style='background-color:#FDFCDC'>
 <form action='${requestUri}' method='get'>
 
 <div class = 'box'style = 'position:absolute;margin-top:530px;margin-left:635px;'></div> 
@@ -223,9 +98,8 @@ onfocus="placeholder= '' " onblur="placeholder='請輸入關鍵字'" />
 <div>
 </div>
 <div>
-<input type='image' src="images/loupe-2.png" 
-style='position:absolute;width:37px;height:37px;left:50%;top:50%;margin-top:46px;
-margin-left:368px '/>
+<input type='image' id="padding" src="images/loupe-2.png" 
+style='position:absolute;width:37px;height:37px;left:50%;top:50%;margin-top:44px;margin-left:355px '/><!-- margin-top:-55px;margin-left:368px -->
 </div>
 <div>
 <a href ='http://localhost:8080/FinalProjectWeb/TestProject'><img src="images/icon.png" style='position:absolute;width:517.6px;height:236.8px;left:50%;top:50%;margin-top:-200px;margin-left:-240px'></a> <!-- margin-top:-265px;margin-left:-175px -->
