@@ -25,7 +25,7 @@ public class GoogleQuery {
 
 	public GoogleQuery(String searchKeyword){
 		this.searchKeyword = searchKeyword;
-		this.url = "http://www.google.com/search?q="+searchKeyword+"+NCCU&oe=utf8&num=10";
+		this.url = "http://www.google.com/search?q="+searchKeyword+"+政大&oe=utf8&num=10";
 		citeUrls = new ArrayList<String>();
 		titles = new ArrayList<String>();
 	}
@@ -38,7 +38,7 @@ public class GoogleQuery {
 		InputStream in = conn.getInputStream();
 		InputStreamReader inReader = new InputStreamReader(in,"utf-8");
 		BufferedReader bufReader = new BufferedReader(inReader);
-		String line = null; //換webtree？
+		String line = null;
 
 		while((line=bufReader.readLine())!=null){
 			retVal += line;
@@ -62,13 +62,21 @@ public class GoogleQuery {
 		
 		for(Element li : lis){
 			try{
-				citeUrls.add(li.select("a").get(0).attr("href").substring(7));
 				//把奇怪的網址截掉
+				citeUrls.add(li.select("a").get(0).attr("href").substring(7));
 				String currentUrl = citeUrls.get(citeUrls.size()-1);
+				//if(currentUrl.contains("youtube")) {
+					//citeUrls.remove(citeUrls.size()-1);
+					//continue;
+				//}
+		    	if(!currentUrl.contains("http")) {
+		    		currentUrl = "http://" + currentUrl;
+		    		System.out.println(currentUrl);
+		   		}
 				int wrong = currentUrl.indexOf("&sa=U&ved");
 				citeUrls.set(citeUrls.size()-1, URLDecoder.decode(currentUrl.substring(0, wrong), "UTF-8"));
 				titles.add(li.select("a").get(0).select(".vvjwJb").text());
-				if(titles.get(titles.size()-1).equals("")) { 
+				if(titles.get(titles.size()-1).equals("")) {
 					continue;
 				}
 				//System.out.println(titles.get(titles.size()-1) + ","+ citeUrls.get(titles.size()-1)); 
