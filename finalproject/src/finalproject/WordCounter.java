@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import javax.net.ssl.SSLHandshakeException;
+
 public class WordCounter {
 	private String urlStr;
     private String content;
@@ -17,9 +19,7 @@ public class WordCounter {
     }
     
     public String fetchContent() throws IOException{
-    	if(urlStr.contains("https://imbaicdf.nccu.edu.tw/index.php/food/")) {
-    		return " ";
-    	}
+    	try {
     	URL url = new URL(this.urlStr);
 		URLConnection conn = url.openConnection();
 		InputStream in = conn.getInputStream();
@@ -34,6 +34,14 @@ public class WordCounter {
 		}
 	
 		return retVal;
+    	}catch(SSLHandshakeException exception) {
+            // Output expected SSLHandshakeExceptions.
+            System.out.println("SSL QQ");
+            return " ";
+        }catch(Exception e) {
+        	System.out.println("Exception");
+    		return " ";
+    	}
     }
     
     public int countKeyword(String keyword) throws IOException{//, SSLHandshakeException{
@@ -59,7 +67,12 @@ public class WordCounter {
 		}
 	
 		return retVal;
-    	}catch(Exception e) {//SSLHandshake
+    	}catch (SSLHandshakeException exception) {
+            // Output expected SSLHandshakeExceptions.
+            System.out.println("SSL QQ");
+            return 0;
+        }catch(Exception e) {
+        	System.out.println("Exception");
     		return 0;
     	}
     }
