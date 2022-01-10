@@ -1,11 +1,11 @@
-package finalproject;
+
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import org.apache.jasper.tagplugins.jstl.core.Url; 
+//import org.apache.jasper.tagplugins.jstl.core.Url; 
 
 public class WebPage {
 	public String url;//public URL url;//public String url;
@@ -22,7 +22,7 @@ public class WebPage {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
 	}
 	
 	public void setScore(ArrayList<Keyword> keywordList) throws IOException{//KeywordList
