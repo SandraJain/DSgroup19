@@ -23,11 +23,13 @@ public class WebTree {
 		//**setNode score of startNode
 		startNode.setNodeScore(keywords);
 		}
-	
-	public void eularPrintTree(){
+	String[][]s;
+	public String[][] eularPrintTree(int size){
+		s= new String[size][2];
 		eularPrintTree(root);
+		return s;
 	}
-	
+	int num=0;
 	private void eularPrintTree(WebNode startNode){
 		int nodeDepth = startNode.getDepth();
 		
@@ -36,6 +38,9 @@ public class WebTree {
 		System.out.print("(");
 		//print "name","score"
 		System.out.print(startNode.webPage.name+","+startNode.nodeScore);
+		s[num][0] = startNode.webPage.name;
+		s[num][1] = startNode.webPage.url;
+    	num++;
 		
 		//2.print child preorder
 		for(WebNode child : startNode.children){
