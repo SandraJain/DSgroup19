@@ -1,4 +1,4 @@
-package finalproject;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,6 +17,9 @@ public class WordCounter {
     }
     
     public String fetchContent() throws IOException{
+    	if(urlStr.contains("https://imbaicdf.nccu.edu.tw/index.php/food/")) {
+    		return " ";
+    	}
     	URL url = new URL(this.urlStr);
 		URLConnection conn = url.openConnection();
 		InputStream in = conn.getInputStream();
