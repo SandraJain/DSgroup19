@@ -1,4 +1,4 @@
-package finalproject;
+
 
 public class Keyword {
 	public String name;
@@ -13,6 +13,4 @@ public class Keyword {
 	public String toString(){
 		return "["+name+","+weight+"]";
 	}
-	
-	
 }
