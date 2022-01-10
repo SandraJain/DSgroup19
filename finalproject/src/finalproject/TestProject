@@ -48,7 +48,9 @@ public class TestProject extends HttpServlet {
 
 		WebTree tree = new WebTree(rootPage);
 		for(int i = 0; i<10; i++) {
-			tree.root.addChild(new WebNode(new WebPage(googleQuery.citeUrls.get(i), googleQuery.titles.get(i))));
+			String url = googleQuery.citeUrls.get(i);
+			String title = googleQuery.titles.get(i);
+			tree.root.addChild(new WebNode(new WebPage(url, title)));
 		}
 		ArrayList<Keyword> keywords = new ArrayList<Keyword>();
 		Keyword k = new Keyword("政大",5);
@@ -79,7 +81,7 @@ public class TestProject extends HttpServlet {
 
 		QuickSort quickSort = new QuickSort(tree.root.children); 
 		quickSort.sort();
-		tree.eularPrintTree();
+//		tree.eularPrintTree();
 		
 		HashMap<String, String> hashmap = new HashMap<String, String>();
 		for(int i =0; i<10; i++) {
@@ -87,18 +89,18 @@ public class TestProject extends HttpServlet {
 		}
 		
 		String[][] s = new String[hashmap.size()][2];
+		s=tree.eularPrintTree(11);
 		request.setAttribute("hashmap", s);
-		int num = 0;
-		for(Entry<String, String> entry : hashmap.entrySet()) {
-		    String key = entry.getKey();
-		    String value = entry.getValue();
-		    s[num][0] = key;
-		    s[num][1] = value;
-		    System.out.println(key+"///" + value);
-		    num++;
-		}
-		request.getRequestDispatcher("googleitem.jsp")
-		 .forward(request, response);
+//		int num = 0;
+//		for(Entry<String, String> entry : hashmap.entrySet()) {
+//		    String key = entry.getKey();
+//		    String value = entry.getValue();
+//		    s[num][0] = key;
+//		    s[num][1] = value;
+//		    System.out.println(key+"///" + value);
+//		    num++;
+//		}
+		request.getRequestDispatcher("googleitem.jsp").forward(request, response);
 		/* old
 		WebPage rootPage = new WebPage("https://www.google.com", "Google");
 		GoogleQuery googleQuery = new GoogleQuery("food"+"+NCCU"); 
