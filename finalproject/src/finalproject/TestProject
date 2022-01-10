@@ -1,7 +1,8 @@
-package finalproject;
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -24,7 +25,7 @@ public class TestProject extends HttpServlet {
     public TestProject() {
         super();
         // TODO Auto-generated constructor stub
-    } 
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,6 +41,104 @@ public class TestProject extends HttpServlet {
 			request.getRequestDispatcher("Search.jsp").forward(request, response);
 			return;
 		}
+
+		WebPage rootPage = new WebPage("https://www.google.com", "Google");
+		GoogleQuery googleQuery = new GoogleQuery(request.getParameter("keyword"));
+		HashMap<String, String> query = googleQuery.query();
+
+		WebTree tree = new WebTree(rootPage);
+		for(int i = 0; i<10; i++) {
+			tree.root.addChild(new WebNode(new WebPage(googleQuery.citeUrls.get(i), googleQuery.titles.get(i))));
+		}
+		ArrayList<Keyword> keywords = new ArrayList<Keyword>();
+		Keyword k = new Keyword("政大",5);
+		Keyword k2 = new Keyword("政治大學",5);
+		Keyword k3 = new Keyword("National Chengchi University",5);
+		Keyword k4 = new Keyword("木柵",4);
+		Keyword k5 = new Keyword("文山",4);
+		Keyword k6 = new Keyword("指南路",4);
+		Keyword k7 = new Keyword("信義",3);
+		Keyword k8 = new Keyword("景美",3);
+		Keyword k9 = new Keyword("貓空",3);
+		Keyword k10 = new Keyword("台北",2);
+		Keyword k11 = new Keyword("North Carolina Central University",-5);
+
+		keywords.add(k);
+		keywords.add(k2);
+		keywords.add(k3);
+		keywords.add(k4);
+		keywords.add(k5);
+		keywords.add(k6);
+		keywords.add(k7);
+		keywords.add(k8);
+		keywords.add(k9);
+		keywords.add(k10);
+		keywords.add(k11);
+
+		tree.setPostOrderScore(keywords);
+
+		QuickSort quickSort = new QuickSort(tree.root.children); 
+		quickSort.sort();
+		tree.eularPrintTree();
+		
+		HashMap<String, String> hashmap = new HashMap<String, String>();
+		for(int i =0; i<10; i++) {
+			hashmap.put(tree.root.children.get(i).webPage.name, tree.root.children.get(i).webPage.url);
+		}
+		
+		String[][] s = new String[hashmap.size()][2];
+		request.setAttribute("hashmap", s);
+		int num = 0;
+		for(Entry<String, String> entry : hashmap.entrySet()) {
+		    String key = entry.getKey();
+		    String value = entry.getValue();
+		    s[num][0] = key;
+		    s[num][1] = value;
+		    System.out.println(key+"///" + value);
+		    num++;
+		}
+		request.getRequestDispatcher("googleitem.jsp")
+		 .forward(request, response);
+		/* old
+		WebPage rootPage = new WebPage("https://www.google.com", "Google");
+		GoogleQuery googleQuery = new GoogleQuery("food"+"+NCCU"); 
+		googleQuery.query();
+		WebTree tree = new WebTree(rootPage);
+		for(int i = 0; i<5; i++) {
+			tree.root.addChild(new WebNode(new WebPage(googleQuery.citeUrls.get(i), googleQuery.titles.get(i))));
+		}
+		ArrayList<Keyword> keywords = new ArrayList<Keyword>();
+		Keyword k = new Keyword("政大",5);
+		Keyword k2 = new Keyword("政治大學",5);
+		Keyword k3 = new Keyword("National Chengchi University",5);
+		Keyword k4 = new Keyword("木柵",4);
+		Keyword k5 = new Keyword("文山",4);
+		Keyword k6 = new Keyword("指南路",4);
+		Keyword k7 = new Keyword("信義",3);
+		Keyword k8 = new Keyword("景美",3);
+		Keyword k9 = new Keyword("貓空",3);
+		Keyword k10 = new Keyword("台北",2);
+		Keyword k11 = new Keyword("North Carolina Central University",-5);
+
+		keywords.add(k);
+		keywords.add(k2);
+		keywords.add(k3);
+		keywords.add(k4);
+		keywords.add(k5);
+		keywords.add(k6);
+		keywords.add(k7);
+		keywords.add(k8);
+		keywords.add(k9);
+		keywords.add(k10);
+		keywords.add(k11);
+
+		tree.setPostOrderScore(keywords);
+
+		QuickSort quickSort = new QuickSort(tree.root.children); 
+		quickSort.sort();
+		tree.eularPrintTree();
+		*/
+		/* from TA
 		GoogleQuery google = new GoogleQuery(request.getParameter("keyword"));
 		HashMap<String, String> query = google.query();
 		
@@ -55,7 +154,7 @@ public class TestProject extends HttpServlet {
 		}
 		request.getRequestDispatcher("googleitem.jsp")
 		 .forward(request, response); 
-		
+		 */
 	}
 
 	/**
