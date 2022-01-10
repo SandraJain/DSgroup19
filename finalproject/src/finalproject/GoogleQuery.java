@@ -1,4 +1,4 @@
-package finalproject;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class GoogleQuery {
 
 	public GoogleQuery(String searchKeyword){
 		this.searchKeyword = searchKeyword;
-		this.url = "http://www.google.com/search?q="+searchKeyword+"&oe=utf8&num=5";
+		this.url = "http://www.google.com/search?q="+searchKeyword+"+NCCU&oe=utf8&num=10";
 		citeUrls = new ArrayList<String>();
 		titles = new ArrayList<String>();
 	}
@@ -71,7 +71,7 @@ public class GoogleQuery {
 				if(titles.get(titles.size()-1).equals("")) { 
 					continue;
 				}
-				System.out.println(titles.get(titles.size()-1) + ","+ citeUrls.get(titles.size()-1)); 
+				//System.out.println(titles.get(titles.size()-1) + ","+ citeUrls.get(titles.size()-1)); 
 				retVal.put(titles.get(titles.size()-1), citeUrls.get(titles.size()-1));
 
 			} catch (IndexOutOfBoundsException e) {
