@@ -75,6 +75,13 @@ public class GoogleQuery {
 		   		}
 				int wrong = currentUrl.indexOf("&sa=U&ved");
 				citeUrls.set(citeUrls.size()-1, URLDecoder.decode(currentUrl.substring(0, wrong), "UTF-8"));
+				/*
+				if(citeUrls.get(currIdx).equals(citeUrls.get(currIdx-1))) {
+					System.out.println("*****"+citeUrls.get(currIdx));
+					citeUrls.remove(currIdx);
+					continue;
+				}
+				*/
 				titles.add(li.select("a").get(0).select(".vvjwJb").text());
 				if(titles.get(titles.size()-1).equals("")) {
 					continue;
