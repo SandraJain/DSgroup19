@@ -34,7 +34,7 @@ text-decoration:underline;
 			//s=s.substring(7);
 		%>
 		
-		<a href='<%=s%>'><%=orderList[i][0]%> </a> <br>連結<br>
+		<a href='<%=s%>'><%=orderList[i][0]%> </a> <br> <br> 
 		<br>
 		<%
 }
