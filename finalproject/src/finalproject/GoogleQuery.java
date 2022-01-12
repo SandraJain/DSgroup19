@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -69,25 +68,37 @@ public class GoogleQuery {
 					//citeUrls.remove(citeUrls.size()-1);
 					//continue;
 				//}
+				titles.add(li.select("a").get(0).select(".vvjwJb").text());
+
+				if(currentUrl.contains("google")) {
+					//citeUrls.remove(citeUrls.size()-1);
+					titles.set(titles.size()-1, "Google");
+					continue;
+				}
+				
 		    	if(!currentUrl.contains("http")) {
-		    		currentUrl = "http://" + currentUrl;
+		    		currentUrl = "https://" + currentUrl;
 		    		System.out.println(currentUrl);
+		    		System.out.println("222");
 		   		}
+		    	
 				int wrong = currentUrl.indexOf("&sa=U&ved");
+				
 				citeUrls.set(citeUrls.size()-1, URLDecoder.decode(currentUrl.substring(0, wrong), "UTF-8"));
 				/*
-				if(citeUrls.get(currIdx).equals(citeUrls.get(currIdx-1))) {
-					System.out.println("*****"+citeUrls.get(currIdx));
-					citeUrls.remove(currIdx);
+				//去掉重覆的網址
+				if(citeUrls.get(citeUrls.size()-1).equals(citeUrls.get(citeUrls.size()-2))) {
+					System.out.println("*****"+citeUrls.get(citeUrls.size()-1));
+					citeUrls.remove(citeUrls.size()-1);
 					continue;
 				}
 				*/
-				titles.add(li.select("a").get(0).select(".vvjwJb").text());
 				if(titles.get(titles.size()-1).equals("")) {
-					continue;
+					titles.set(titles.size()-1, "null");
+					//continue;
 				}
 				//System.out.println(titles.get(titles.size()-1) + ","+ citeUrls.get(titles.size()-1)); 
-				retVal.put(titles.get(titles.size()-1), citeUrls.get(titles.size()-1));
+				retVal.put(titles.get(titles.size()-1), citeUrls.get(citeUrls.size()-1));
 
 			} catch (IndexOutOfBoundsException e) {
 //				e.printStackTrace();
