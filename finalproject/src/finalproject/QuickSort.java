@@ -26,7 +26,7 @@ public class QuickSort {
 		
 		private void quickSort(int leftbound, int rightbound){
 			//1. implement quickSort algorithm
-			if(leftbound < rightbound) { //�p�ƨ�j �n�令�j��p
+			if(leftbound < rightbound) { 
 				int i=(leftbound-1);
 				int pivot=list.get(rightbound).nodeScore; 
 				for(int j=leftbound; j<=rightbound-1;j++) {
