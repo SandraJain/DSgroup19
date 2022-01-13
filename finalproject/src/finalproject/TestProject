@@ -46,11 +46,12 @@ public class TestProject extends HttpServlet {
 		String input = request.getParameter("keyword");
 		
 		//handle " "
-		/*
+		//input.replaceAll(" ", "+");
+		
 		if(input.contains(" ")) {
 			input = input.substring(0, input.indexOf(" ")-1)+"+"+input.substring(input.indexOf(" ")+1, input.length()-1);
 		}
-		*/
+		
 		
 		GoogleQuery googleQuery = new GoogleQuery(input);
 		HashMap<String, String> query = googleQuery.query();
