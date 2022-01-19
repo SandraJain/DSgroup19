@@ -30,6 +30,7 @@ text-decoration:underline;
 		<%
 		String[][] orderList = (String[][]) request.getAttribute("hashmap");
 		for (int i = 1; i < orderList.length; i++) {
+			System.out.println("test:"+i);
 			String s=orderList[i][1];
 			//s=s.substring(7);
 		%>
@@ -37,8 +38,21 @@ text-decoration:underline;
 		<a href='<%=s%>'><%=orderList[i][0]%> </a> <br> <br> 
 		<br>
 		<%
-}
-%>
+		}
+		%>
+		
+		<b>建議搜尋</b>
+		<br>
+		<%
+		String[] sug = (String[]) request.getAttribute("suggest");
+		for(int i = 0; i < sug.length; i++){
+			%>
+			
+			<p><%=sug[i]%> </p>
+			<%
+		}
+		%>
+		
 	</div>
 	<div>
 		<img src="images/icon.png"
