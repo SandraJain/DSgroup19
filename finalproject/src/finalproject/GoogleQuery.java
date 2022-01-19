@@ -21,12 +21,14 @@ public class GoogleQuery {
 	public String content;
 	public ArrayList<String> citeUrls;
 	public ArrayList<String> titles;
+	public String[] suggests;
 
 	public GoogleQuery(String searchKeyword){
 		this.searchKeyword = searchKeyword;
 		this.url = "http://www.google.com/search?q="+searchKeyword+"+政大&oe=utf8&num=10";
 		citeUrls = new ArrayList<String>();
 		titles = new ArrayList<String>();
+		suggests = new String[8];
 	}
 	
 	private String fetchContent() throws IOException{
@@ -53,11 +55,11 @@ public class GoogleQuery {
 		HashMap<String, String> retVal = new HashMap<String, String>();
 		
 		Document doc = Jsoup.parse(content);
-//		System.out.println(doc.text());
+		//System.out.println(doc);//.text());
 		Elements lis = doc.select("div");
-//		 System.out.println(lis);
+		 //System.out.println(lis);
 		lis = lis.select(".kCrYT");
-//		 System.out.println(lis.size());
+		 //System.out.println(lis);//.size());
 		
 		for(Element li : lis){
 			try{
@@ -99,9 +101,25 @@ public class GoogleQuery {
 				}
 				//System.out.println(titles.get(titles.size()-1) + ","+ citeUrls.get(titles.size()-1)); 
 				retVal.put(titles.get(titles.size()-1), citeUrls.get(citeUrls.size()-1));
-
+				
+				
 			} catch (IndexOutOfBoundsException e) {
 //				e.printStackTrace();
+			}
+			
+			//建議搜尋
+			//System.out.println(doc);
+			Elements sug = doc.select("div");//BNeawe s3v9rd AP7Wnd lRVwie
+			sug = sug.select(".BNeawe.s3v9rd.AP7Wnd.lRVwie");
+			//sug = sug.select(".s75CSd_OhScic_AB4Wff");
+			for(int i = 0; i < sug.size(); i++){
+				try{
+					suggests[i] = sug.get(i).text();
+					System.out.println(sug.get(i).text());
+					//System.out.println(suggests.get(suggests.size()-1));
+				} catch (IndexOutOfBoundsException e) {
+//					e.printStackTrace();
+				}
 			}
 		}
 		return retVal;
