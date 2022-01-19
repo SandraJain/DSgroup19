@@ -130,6 +130,7 @@ public class TestProject extends HttpServlet {
 //		    System.out.println(key+"///" + value);
 //		    num++;
 //		}
+		request.setAttribute("suggest", googleQuery.suggests);
 		request.getRequestDispatcher("googleitem.jsp").forward(request, response);
 		/* old
 		WebPage rootPage = new WebPage("https://www.google.com", "Google");
