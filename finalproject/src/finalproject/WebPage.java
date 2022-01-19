@@ -16,6 +16,7 @@ public class WebPage {
 	public WebPage(String url,String name){
 		this.url = url;//.substring(7);
 		System.out.println(this.url);  
+		//System.out.println("111");
 		this.name = name;
 		try {
 			counter = new WordCounter(url);
@@ -28,10 +29,11 @@ public class WebPage {
 	public void setScore(ArrayList<Keyword> keywordList) throws IOException{//KeywordList
 		score = 0;
 //		3.calculate score
-		//score 還要加上使用者輸入字要*8
 		for(Keyword k : keywordList){	//Keyword k : keywordList.keywordList
 			score+=k.weight*counter.countKeyword(k.name);
 		}
 	}
-	
+	public void setName(String name) {
+		this.name = name;
+	}
 }
